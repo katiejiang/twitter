@@ -16,6 +16,7 @@ class TimelineViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        updateTweets()
         
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refreshControlAction(_:)), for: UIControlEvents.valueChanged)
@@ -29,6 +30,11 @@ class TimelineViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func refreshControlAction(_ refreshControl: UIRefreshControl) {
+        updateTweets()
+        refreshControl.endRefreshing()
+    }
+    
+    func updateTweets() {
         APIManager.shared.getHomeTimeLine { (tweets, error) in
             if let tweets = tweets {
                 self.tweets = tweets
@@ -37,7 +43,7 @@ class TimelineViewController: UIViewController, UITableViewDelegate, UITableView
                 print("Error getting home timeline: " + error.localizedDescription)
             }
         }
-        refreshControl.endRefreshing()
+
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
