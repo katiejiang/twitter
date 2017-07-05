@@ -56,7 +56,7 @@ class TweetCell: UITableViewCell {
     }
     
     @IBAction func onTapFavorite(_ sender: Any) {
-        // Set local state
+        // Set state
         if !tweet.favorited {
             tweet.favorited = true
             tweet.favoriteCount += 1
@@ -83,5 +83,29 @@ class TweetCell: UITableViewCell {
     }
     
     @IBAction func onTapRetweet(_ sender: Any) {
+        // Set state
+        if !tweet.retweeted {
+            tweet.retweeted = true
+            tweet.retweetCount += 1
+            APIManager.shared.retweet(tweet) { (tweet: Tweet?, error: Error?) in
+                if let error = error {
+                    print("Error favoriting tweet: \(error.localizedDescription)")
+                } else if let tweet = tweet {
+                    print("Successfully favorited the following Tweet: \n\(tweet.text)")
+                }
+            }
+        } else {
+            tweet.retweeted = false
+            tweet.retweetCount -= 1
+            APIManager.shared.unretweet(tweet) { (tweet: Tweet?, error: Error?) in
+                if let error = error {
+                    print("Error favoriting tweet: \(error.localizedDescription)")
+                } else if let tweet = tweet {
+                    print("Successfully favorited the following Tweet: \n\(tweet.text)")
+                }
+            }
+        }
+        // Update UI
+        updateCell()
     }
 }
