@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AlamofireImage
 
 class TweetCell: UITableViewCell {
     
@@ -35,6 +36,7 @@ class TweetCell: UITableViewCell {
             if tweet.retweeted {
                 retweetButton.imageView?.image = #imageLiteral(resourceName: "retweet-icon-green")
             }
+            profileImageView.af_setImage(withURL: tweet.profileUrl!)
         }
     }
     
