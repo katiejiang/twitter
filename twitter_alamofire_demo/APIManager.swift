@@ -41,6 +41,7 @@ class APIManager: SessionManager {
                     print("Welcome \(user.name!)")
                     
                     // MARK: TODO: set User.current, so that it's persisted
+                    User.current = user
                     
                     success()
                 }
@@ -54,6 +55,7 @@ class APIManager: SessionManager {
         clearCredentials()
         
         // TODO: Clear current user by setting it to nil
+        User.current = nil
         
         NotificationCenter.default.post(name: NSNotification.Name("didLogout"), object: nil)
     }
