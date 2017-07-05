@@ -171,11 +171,11 @@
                                                 <constraint firstItem="WXu-dy-FWV" firstAttribute="leading" secondItem="KdY-H2-wtd" secondAttribute="trailing" constant="8" id="mxb-8d-sn8"/>
                                                 <constraint firstItem="9Kz-1Z-SFR" firstAttribute="leading" secondItem="KdY-H2-wtd" secondAttribute="trailing" constant="8" id="oOb-KW-L76"/>
                                                 <constraint firstItem="bCk-za-Fbh" firstAttribute="leading" secondItem="Lhe-Qd-oor" secondAttribute="trailing" id="pPS-Rr-8A1"/>
-                                                <constraint firstItem="qwS-xM-2kW" firstAttribute="leading" secondItem="bCk-za-Fbh" secondAttribute="trailing" constant="44" id="pVv-L6-gF4"/>
                                                 <constraint firstItem="SvR-rn-0N2" firstAttribute="top" secondItem="zd2-Er-659" secondAttribute="top" constant="8" id="pkk-Kp-q9j"/>
                                                 <constraint firstAttribute="bottom" secondItem="f2D-qe-N6W" secondAttribute="bottom" constant="14" id="prp-dS-oWC"/>
                                                 <constraint firstAttribute="trailing" secondItem="Ng6-db-c3x" secondAttribute="trailing" constant="8" id="sE3-U3-tu3"/>
                                                 <constraint firstItem="wQO-M2-YiN" firstAttribute="top" secondItem="9Kz-1Z-SFR" secondAttribute="bottom" constant="8.5" id="sJq-99-bpY"/>
+                                                <constraint firstItem="wQO-M2-YiN" firstAttribute="leading" secondItem="qwS-xM-2kW" secondAttribute="trailing" constant="50" id="uoR-6X-UoF"/>
                                                 <constraint firstItem="Ng6-db-c3x" firstAttribute="top" secondItem="zd2-Er-659" secondAttribute="top" constant="8" id="vix-yU-glD"/>
                                             </constraints>
                                         </tableViewCellContentView>
