@@ -38,7 +38,7 @@ class APIManager: SessionManager {
                 if let error = error {
                     failure(error)
                 } else if let user = user {
-                    print("Welcome \(user.name)")
+                    print("Welcome \(user.name!)")
                     
                     // MARK: TODO: set User.current, so that it's persisted
                     
@@ -54,7 +54,7 @@ class APIManager: SessionManager {
         clearCredentials()
         
         // TODO: Clear current user by setting it to nil
-
+        
         NotificationCenter.default.post(name: NSNotification.Name("didLogout"), object: nil)
     }
     
@@ -76,9 +76,9 @@ class APIManager: SessionManager {
                 completion(User(dictionary: userDictionary), nil)
         }
     }
-        
+    
     func getHomeTimeLine(completion: @escaping ([Tweet]?, Error?) -> ()) {
-
+        
         // This uses tweets from disk to avoid hitting rate limit. Comment out if you want fresh
         // tweets,
         if let data = UserDefaults.standard.object(forKey: "hometimeline_tweets") as? Data {
