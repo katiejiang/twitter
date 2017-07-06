@@ -21,19 +21,29 @@ class TweetDetailsViewController: UIViewController {
     @IBOutlet weak var favoriteButton: UIButton!
     @IBOutlet weak var favoriteLabel: UILabel!
     
-    var tweet: Tweet! {
-        didSet {
-            updateInfo()
-        }
-    }
+    var tweet: Tweet!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        retweetButton.setImage(#imageLiteral(resourceName: "retweet-icon"), for: .normal)
+        retweetButton.setImage(#imageLiteral(resourceName: "retweet-icon-green"), for: .selected)
+        favoriteButton.setImage(#imageLiteral(resourceName: "favor-icon"), for: .normal)
+        favoriteButton.setImage(#imageLiteral(resourceName: "favor-icon-red"), for: .selected)
+        updateInfo()
     }
     
     func updateInfo() {
+        nameLabel.text = tweet.user.name
+        screenNameLabel.text = "@\(tweet.user.screenName!)"
+        dateLabel.text = tweet.createdAtString
+        tweetLabel.text = tweet.text
+        retweetLabel.text = String(describing: tweet.retweetCount)
+        favoriteLabel.text = String(describing: tweet.favoriteCount)
+        profileImageView.af_setImage(withURL: tweet.profileUrl!)
+        retweetButton.isSelected = tweet.retweeted
+        favoriteButton.isSelected = tweet.favorited
     }
 
     override func didReceiveMemoryWarning() {
@@ -41,6 +51,60 @@ class TweetDetailsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func didTapRetweet(_ sender: Any) {
+        // Set state
+        if !tweet.retweeted {
+            tweet.retweeted = true
+            tweet.retweetCount += 1
+            APIManager.shared.retweet(tweet) { (tweet: Tweet?, error: Error?) in
+                if let error = error {
+                    print("Error favoriting tweet: \(error.localizedDescription)")
+                } else if let tweet = tweet {
+                    print("Successfully favorited the following Tweet: \n\(tweet.text)")
+                }
+            }
+        } else {
+            tweet.retweeted = false
+            tweet.retweetCount -= 1
+            APIManager.shared.unretweet(tweet) { (tweet: Tweet?, error: Error?) in
+                if let error = error {
+                    print("Error favoriting tweet: \(error.localizedDescription)")
+                } else if let tweet = tweet {
+                    print("Successfully favorited the following Tweet: \n\(tweet.text)")
+                }
+            }
+        }
+        // Update UI
+        updateInfo()
+
+    }
+    
+    @IBAction func didTapFavorite(_ sender: Any) {
+        // Set state
+        if !tweet.favorited {
+            tweet.favorited = true
+            tweet.favoriteCount += 1
+            APIManager.shared.favorite(tweet) { (tweet: Tweet?, error: Error?) in
+                if let error = error {
+                    print("Error favoriting tweet: \(error.localizedDescription)")
+                } else if let tweet = tweet {
+                    print("Successfully favorited the following Tweet: \n\(tweet.text)")
+                }
+            }
+        } else {
+            tweet.favorited = false
+            tweet.favoriteCount -= 1
+            APIManager.shared.unfavorite(tweet) { (tweet: Tweet?, error: Error?) in
+                if let error = error {
+                    print("Error favoriting tweet: \(error.localizedDescription)")
+                } else if let tweet = tweet {
+                    print("Successfully favorited the following Tweet: \n\(tweet.text)")
+                }
+            }
+        }
+        // Update UI
+        updateInfo()
+    }
 
     /*
     // MARK: - Navigation
