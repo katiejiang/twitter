@@ -55,6 +55,81 @@
             </objects>
             <point key="canvasLocation" x="32.799999999999997" y="37.331334332833585"/>
         </scene>
+        <!--NewPostViewController-->
+        <scene sceneID="2YQ-A6-b2o">
+            <objects>
+                <viewController storyboardIdentifier="NewPostViewController" title="NewPostViewController" id="Yq7-8D-1Fp" customClass="NewPostViewController" customModule="twitter_alamofire_demo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="N0h-k9-UqA"/>
+                        <viewControllerLayoutGuide type="bottom" id="yd9-WK-ePx"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="X4I-zG-dF5">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Kw-7l-QiV">
+                                <rect key="frame" x="333" y="28" width="26" height="24"/>
+                                <state key="normal" image="close-icon"/>
+                                <connections>
+                                    <action selector="onTapCancel:" destination="Yq7-8D-1Fp" eventType="touchUpInside" id="aCI-u0-8eM"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fkj-uh-VHB">
+                                <rect key="frame" x="16" y="28" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="U0a-8i-K39"/>
+                                    <constraint firstAttribute="width" constant="50" id="t4k-dF-jb7"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Rg-vq-jBc">
+                                <rect key="frame" x="164" y="354" width="47" height="33"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Tweet"/>
+                                <connections>
+                                    <action selector="onTapTweet:" destination="Yq7-8D-1Fp" eventType="touchUpInside" id="boG-CQ-HVz"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="gu8-f4-7J9">
+                                <rect key="frame" x="16" y="86" width="343" height="250"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="250" id="u4Q-Ea-aAj"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="fkj-uh-VHB" firstAttribute="leading" secondItem="X4I-zG-dF5" secondAttribute="leading" constant="16" id="19q-0a-MZM"/>
+                            <constraint firstAttribute="trailing" secondItem="gu8-f4-7J9" secondAttribute="trailing" constant="16" id="LiJ-Gh-ykM"/>
+                            <constraint firstItem="5Rg-vq-jBc" firstAttribute="top" secondItem="gu8-f4-7J9" secondAttribute="bottom" constant="18" id="Mfh-m9-ET7"/>
+                            <constraint firstAttribute="trailing" secondItem="7Kw-7l-QiV" secondAttribute="trailing" constant="16" id="OXr-qN-md2"/>
+                            <constraint firstItem="gu8-f4-7J9" firstAttribute="top" secondItem="fkj-uh-VHB" secondAttribute="bottom" constant="8" id="QIx-1o-s6U"/>
+                            <constraint firstItem="gu8-f4-7J9" firstAttribute="leading" secondItem="X4I-zG-dF5" secondAttribute="leading" constant="16" id="gzk-97-USW"/>
+                            <constraint firstItem="fkj-uh-VHB" firstAttribute="top" secondItem="N0h-k9-UqA" secondAttribute="bottom" constant="8" id="rFT-jw-UQe"/>
+                            <constraint firstItem="7Kw-7l-QiV" firstAttribute="top" secondItem="N0h-k9-UqA" secondAttribute="bottom" constant="8" id="seR-Nr-nuy"/>
+                            <constraint firstItem="5Rg-vq-jBc" firstAttribute="centerX" secondItem="X4I-zG-dF5" secondAttribute="centerX" id="zeR-3v-j0k"/>
+                        </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="nHH-rb-owK" appends="YES" id="ZUL-cr-Cne"/>
+                        </connections>
+                    </view>
+                    <connections>
+                        <outlet property="profileImageView" destination="fkj-uh-VHB" id="3P4-Jh-Wbl"/>
+                        <outlet property="tweetText" destination="gu8-f4-7J9" id="QcW-QQ-h9g"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wi9-oc-T5h" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="nHH-rb-owK">
+                    <connections>
+                        <action selector="onTap:" destination="Yq7-8D-1Fp" id="hgD-Ly-hkI"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="2444" y="-657.12143928035982"/>
+        </scene>
         <!--Home Timeline-->
         <scene sceneID="5vf-Kh-7ye">
             <objects>
@@ -208,9 +283,14 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Home Timeline" id="9Zi-uW-GTS">
-                        <barButtonItem key="rightBarButtonItem" title="Logout" id="hz2-ji-ft0">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="hz2-ji-ft0">
                             <connections>
                                 <action selector="didTapLogout:" destination="5YO-Vh-39k" id="fM7-h5-mq1"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="edit-icon" id="gZ1-aT-hVL">
+                            <connections>
+                                <segue destination="Yq7-8D-1Fp" kind="presentation" identifier="newPostSegue" id="UWW-4z-PSq"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -243,6 +323,8 @@
     </scenes>
     <resources>
         <image name="TwitterLogoBlue" width="200" height="200"/>
+        <image name="close-icon" width="26" height="24"/>
+        <image name="edit-icon" width="30" height="27"/>
         <image name="favor-icon" width="30" height="30"/>
         <image name="message-icon" width="30" height="30"/>
         <image name="reply-icon" width="30" height="30"/>
