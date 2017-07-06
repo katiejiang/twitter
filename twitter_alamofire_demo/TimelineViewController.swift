@@ -81,6 +81,10 @@ class TimelineViewController: UIViewController, UITableViewDelegate, UITableView
             if identifier == "newPostSegue" {
                 let vc = segue.destination as! NewPostViewController
                 vc.delegate = self
+            } else if identifier == "tweetDetailsSegue" {
+                let vc = segue.destination as! TweetDetailsViewController
+                let cell = sender as! TweetCell
+                vc.tweet = cell.tweet
             }
         }
     }
