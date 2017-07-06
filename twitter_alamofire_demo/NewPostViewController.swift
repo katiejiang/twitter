@@ -10,6 +10,7 @@ import UIKit
 
 class NewPostViewController: UIViewController {
 
+    @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var tweetText: UITextView!
     var delegate: NewPostViewControllerDelegate?
     
@@ -17,6 +18,7 @@ class NewPostViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        profileImageView.af_setImage(withURL: User.current!.profileUrl!)
     }
 
     override func didReceiveMemoryWarning() {

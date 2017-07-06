@@ -74,12 +74,23 @@
                                     <action selector="onTapCancel:" destination="Yq7-8D-1Fp" eventType="touchUpInside" id="aCI-u0-8eM"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fkj-uh-VHB">
-                                <rect key="frame" x="16" y="20" width="40" height="40"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fkj-uh-VHB">
+                                <rect key="frame" x="16" y="28" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="U0a-8i-K39"/>
+                                    <constraint firstAttribute="width" constant="50" id="t4k-dF-jb7"/>
+                                </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Rg-vq-jBc">
+                                <rect key="frame" x="164" y="354" width="47" height="33"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Tweet"/>
+                                <connections>
+                                    <action selector="onTapTweet:" destination="Yq7-8D-1Fp" eventType="touchUpInside" id="boG-CQ-HVz"/>
+                                </connections>
+                            </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="gu8-f4-7J9">
-                                <rect key="frame" x="16" y="68" width="343" height="250"/>
+                                <rect key="frame" x="16" y="86" width="343" height="250"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="250" id="u4Q-Ea-aAj"/>
@@ -87,23 +98,17 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Rg-vq-jBc">
-                                <rect key="frame" x="164" y="336" width="47" height="33"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <state key="normal" title="Tweet"/>
-                                <connections>
-                                    <action selector="onTapTweet:" destination="Yq7-8D-1Fp" eventType="touchUpInside" id="boG-CQ-HVz"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
+                            <constraint firstItem="fkj-uh-VHB" firstAttribute="leading" secondItem="X4I-zG-dF5" secondAttribute="leading" constant="16" id="19q-0a-MZM"/>
                             <constraint firstAttribute="trailing" secondItem="gu8-f4-7J9" secondAttribute="trailing" constant="16" id="LiJ-Gh-ykM"/>
                             <constraint firstItem="5Rg-vq-jBc" firstAttribute="top" secondItem="gu8-f4-7J9" secondAttribute="bottom" constant="18" id="Mfh-m9-ET7"/>
                             <constraint firstAttribute="trailing" secondItem="7Kw-7l-QiV" secondAttribute="trailing" constant="16" id="OXr-qN-md2"/>
-                            <constraint firstItem="gu8-f4-7J9" firstAttribute="top" secondItem="7Kw-7l-QiV" secondAttribute="bottom" constant="16" id="RMm-Kw-vl7"/>
+                            <constraint firstItem="gu8-f4-7J9" firstAttribute="top" secondItem="fkj-uh-VHB" secondAttribute="bottom" constant="8" id="QIx-1o-s6U"/>
                             <constraint firstItem="gu8-f4-7J9" firstAttribute="leading" secondItem="X4I-zG-dF5" secondAttribute="leading" constant="16" id="gzk-97-USW"/>
+                            <constraint firstItem="fkj-uh-VHB" firstAttribute="top" secondItem="N0h-k9-UqA" secondAttribute="bottom" constant="8" id="rFT-jw-UQe"/>
                             <constraint firstItem="7Kw-7l-QiV" firstAttribute="top" secondItem="N0h-k9-UqA" secondAttribute="bottom" constant="8" id="seR-Nr-nuy"/>
                             <constraint firstItem="5Rg-vq-jBc" firstAttribute="centerX" secondItem="X4I-zG-dF5" secondAttribute="centerX" id="zeR-3v-j0k"/>
                         </constraints>
@@ -112,6 +117,7 @@
                         </connections>
                     </view>
                     <connections>
+                        <outlet property="profileImageView" destination="fkj-uh-VHB" id="3P4-Jh-Wbl"/>
                         <outlet property="tweetText" destination="gu8-f4-7J9" id="QcW-QQ-h9g"/>
                     </connections>
                 </viewController>
