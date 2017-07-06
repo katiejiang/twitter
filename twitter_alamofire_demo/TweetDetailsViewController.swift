@@ -32,6 +32,7 @@ class TweetDetailsViewController: UIViewController {
         favoriteButton.setImage(#imageLiteral(resourceName: "favor-icon"), for: .normal)
         favoriteButton.setImage(#imageLiteral(resourceName: "favor-icon-red"), for: .selected)
         updateInfo()
+        navigationController!.title = "Tweet"
     }
     
     func updateInfo() {
