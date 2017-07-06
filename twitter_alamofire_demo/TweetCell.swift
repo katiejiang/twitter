@@ -46,6 +46,12 @@ class TweetCell: UITableViewCell {
         retweetButton.setImage(#imageLiteral(resourceName: "retweet-icon-green"), for: .selected)
         favoriteButton.setImage(#imageLiteral(resourceName: "favor-icon"), for: .normal)
         favoriteButton.setImage(#imageLiteral(resourceName: "favor-icon-red"), for: .selected)
+        
+        profileImageView.layer.borderWidth = 1
+        profileImageView.layer.masksToBounds = false
+        profileImageView.layer.borderColor = UIColor.lightGray.cgColor
+        profileImageView.layer.cornerRadius = profileImageView.frame.height/2
+        profileImageView.clipsToBounds = true
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
