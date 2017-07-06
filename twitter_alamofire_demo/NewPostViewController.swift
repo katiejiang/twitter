@@ -10,7 +10,8 @@ import UIKit
 
 class NewPostViewController: UIViewController {
 
-    @IBOutlet weak var tweetField: UITextField!
+    @IBOutlet weak var tweetText: UITextView!
+    var delegate: NewPostViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +36,6 @@ class NewPostViewController: UIViewController {
         view.endEditing(true)
     }
     
-    
     /*
     // MARK: - Navigation
 
@@ -45,5 +45,9 @@ class NewPostViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+}
 
+protocol NewPostViewControllerDelegate {
+
+    func did(post: Tweet)
 }

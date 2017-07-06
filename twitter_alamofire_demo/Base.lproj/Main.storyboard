@@ -68,7 +68,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Kw-7l-QiV">
-                                <rect key="frame" x="334" y="28" width="26" height="24"/>
+                                <rect key="frame" x="333" y="28" width="26" height="24"/>
                                 <state key="normal" image="close-icon"/>
                                 <connections>
                                     <action selector="onTapCancel:" destination="Yq7-8D-1Fp" eventType="touchUpInside" id="aCI-u0-8eM"/>
@@ -78,14 +78,18 @@
                                 <rect key="frame" x="16" y="20" width="40" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="What's happening?" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qPK-9y-dp6">
-                                <rect key="frame" x="16" y="80" width="343" height="30"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="gu8-f4-7J9">
+                                <rect key="frame" x="16" y="68" width="343" height="250"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="250" id="u4Q-Ea-aAj"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Rg-vq-jBc">
-                                <rect key="frame" x="166" y="318" width="42" height="30"/>
+                                <rect key="frame" x="164" y="336" width="47" height="33"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Tweet"/>
                                 <connections>
                                     <action selector="onTapTweet:" destination="Yq7-8D-1Fp" eventType="touchUpInside" id="boG-CQ-HVz"/>
@@ -95,20 +99,20 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="7Kw-7l-QiV" secondAttribute="trailing" constant="15" id="2Mp-ab-ViB"/>
-                            <constraint firstAttribute="trailing" secondItem="qPK-9y-dp6" secondAttribute="trailing" constant="16" id="7f4-9N-6xa"/>
-                            <constraint firstItem="5Rg-vq-jBc" firstAttribute="centerX" secondItem="X4I-zG-dF5" secondAttribute="centerX" id="UmW-sZ-g7R"/>
-                            <constraint firstItem="qPK-9y-dp6" firstAttribute="leading" secondItem="X4I-zG-dF5" secondAttribute="leading" constant="16" id="WD0-oy-teB"/>
-                            <constraint firstItem="5Rg-vq-jBc" firstAttribute="top" secondItem="qPK-9y-dp6" secondAttribute="bottom" constant="208" id="f4c-Ep-7tH"/>
-                            <constraint firstItem="7Kw-7l-QiV" firstAttribute="top" secondItem="N0h-k9-UqA" secondAttribute="bottom" constant="8" id="k1w-7g-lUW"/>
-                            <constraint firstItem="qPK-9y-dp6" firstAttribute="top" secondItem="7Kw-7l-QiV" secondAttribute="bottom" constant="28" id="tfS-vt-ajh"/>
+                            <constraint firstAttribute="trailing" secondItem="gu8-f4-7J9" secondAttribute="trailing" constant="16" id="LiJ-Gh-ykM"/>
+                            <constraint firstItem="5Rg-vq-jBc" firstAttribute="top" secondItem="gu8-f4-7J9" secondAttribute="bottom" constant="18" id="Mfh-m9-ET7"/>
+                            <constraint firstAttribute="trailing" secondItem="7Kw-7l-QiV" secondAttribute="trailing" constant="16" id="OXr-qN-md2"/>
+                            <constraint firstItem="gu8-f4-7J9" firstAttribute="top" secondItem="7Kw-7l-QiV" secondAttribute="bottom" constant="16" id="RMm-Kw-vl7"/>
+                            <constraint firstItem="gu8-f4-7J9" firstAttribute="leading" secondItem="X4I-zG-dF5" secondAttribute="leading" constant="16" id="gzk-97-USW"/>
+                            <constraint firstItem="7Kw-7l-QiV" firstAttribute="top" secondItem="N0h-k9-UqA" secondAttribute="bottom" constant="8" id="seR-Nr-nuy"/>
+                            <constraint firstItem="5Rg-vq-jBc" firstAttribute="centerX" secondItem="X4I-zG-dF5" secondAttribute="centerX" id="zeR-3v-j0k"/>
                         </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="nHH-rb-owK" appends="YES" id="ZUL-cr-Cne"/>
                         </connections>
                     </view>
                     <connections>
-                        <outlet property="tweetField" destination="qPK-9y-dp6" id="vUr-8P-l6H"/>
+                        <outlet property="tweetText" destination="gu8-f4-7J9" id="QcW-QQ-h9g"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wi9-oc-T5h" userLabel="First Responder" sceneMemberID="firstResponder"/>
