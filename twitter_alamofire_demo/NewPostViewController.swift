@@ -29,7 +29,16 @@ class NewPostViewController: UIViewController {
     }
 
     @IBAction func onTapTweet(_ sender: Any) {
-        
+        if tweetText.text != nil {
+            APIManager.shared.composeTweet(with: tweetText.text) { (tweet, error) in
+                if let error = error {
+                    print("Error composing Tweet: \(error.localizedDescription)")
+                } else if let tweet = tweet {
+                    self.delegate?.did(post: tweet)
+                    print("Compose Tweet Success!")
+                }
+            }
+        }
     }
     
     @IBAction func onTap(_ sender: Any) {
