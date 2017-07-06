@@ -39,6 +39,7 @@ class NewPostViewController: UIViewController {
                 }
             }
         }
+        self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func onTap(_ sender: Any) {
@@ -57,6 +58,5 @@ class NewPostViewController: UIViewController {
 }
 
 protocol NewPostViewControllerDelegate {
-
     func did(post: Tweet)
 }

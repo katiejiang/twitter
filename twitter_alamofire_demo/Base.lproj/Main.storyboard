@@ -284,7 +284,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="edit-icon" id="gZ1-aT-hVL">
                             <connections>
-                                <segue destination="Yq7-8D-1Fp" kind="presentation" id="UWW-4z-PSq"/>
+                                <segue destination="Yq7-8D-1Fp" kind="presentation" identifier="newPostSegue" id="UWW-4z-PSq"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
