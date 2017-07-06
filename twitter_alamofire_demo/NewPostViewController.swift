@@ -19,6 +19,8 @@ class NewPostViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         profileImageView.af_setImage(withURL: User.current!.profileUrl!)
+        
+        tweetText.becomeFirstResponder()
     }
 
     override func didReceiveMemoryWarning() {
@@ -45,7 +47,7 @@ class NewPostViewController: UIViewController {
     }
     
     @IBAction func onTap(_ sender: Any) {
-        view.endEditing(true)
+//        view.endEditing(true)
     }
     
     /*
