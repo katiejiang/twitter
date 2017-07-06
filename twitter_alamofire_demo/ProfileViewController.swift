@@ -12,12 +12,13 @@ import AlamofireImage
 class ProfileViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     var tweets: [Tweet] = []
-    var user: User?
+    var user: User! = User.current
     
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var screenNameLabel: UILabel!
     @IBOutlet weak var bioLabel: UILabel!
+    @IBOutlet weak var tweetsLabel: UILabel!
     @IBOutlet weak var followingLabel: UILabel!
     @IBOutlet weak var followersLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
@@ -26,6 +27,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         super.viewDidLoad()
         
         updateTweets()
+        updateProfile()
         
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refreshControlAction(_:)), for: UIControlEvents.valueChanged)
@@ -39,7 +41,17 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func updateProfile() {
-        
+        if let user = user {
+            if let profileUrl = user.profileUrl {
+                profileImageView.af_setImage(withURL: profileUrl)
+            }
+            nameLabel.text = user.name
+            screenNameLabel.text = "@\(user.screenName!)"
+            bioLabel.text = user.bio
+            tweetsLabel.text = String(describing: user.tweetCount!)
+            followingLabel.text = String(describing: user.followingCount!)
+            followersLabel.text = String(describing: user.followersCount!)
+        }
     }
     
     func refreshControlAction(_ refreshControl: UIRefreshControl) {
