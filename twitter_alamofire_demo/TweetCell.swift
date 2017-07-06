@@ -11,6 +11,8 @@ import AlamofireImage
 
 class TweetCell: UITableViewCell {
     
+    weak var delegate: TweetCellDelegate?
+    
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var screenNameLabel: UILabel!
@@ -47,11 +49,18 @@ class TweetCell: UITableViewCell {
         favoriteButton.setImage(#imageLiteral(resourceName: "favor-icon"), for: .normal)
         favoriteButton.setImage(#imageLiteral(resourceName: "favor-icon-red"), for: .selected)
         
+        // Make profile picture circular
         profileImageView.layer.borderWidth = 1
         profileImageView.layer.masksToBounds = false
         profileImageView.layer.borderColor = UIColor.lightGray.cgColor
         profileImageView.layer.cornerRadius = profileImageView.frame.height/2
         profileImageView.clipsToBounds = true
+        
+        // Tap gesture recognizer
+        let profileTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.didTapUserProfile(_:)))
+        profileImageView.addGestureRecognizer(profileTapGestureRecognizer)
+        profileImageView.isUserInteractionEnabled = true
+
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -113,4 +122,13 @@ class TweetCell: UITableViewCell {
         // Update UI
         updateCell()
     }
+    
+    func didTapUserProfile(_ sender: UITapGestureRecognizer) {
+        delegate?.tweetCell(self, didTap: tweet.user)
+    }
+}
+
+protocol TweetCellDelegate: class {
+    func tweetCell(_ tweetCell: TweetCell, didTap user: User)
+
 }

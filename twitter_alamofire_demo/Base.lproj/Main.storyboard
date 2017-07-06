@@ -292,11 +292,12 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="Ctl-bI-Eag" id="igH-cX-XMH"/>
+                        <segue destination="QG8-9Y-p7C" kind="show" identifier="userSegue" id="Crc-1y-ijs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZlF-i2-Ves" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2599.1999999999998" y="36.431784107946029"/>
+            <point key="canvasLocation" x="2596" y="36"/>
         </scene>
         <!--Tweet Details View Controller-->
         <scene sceneID="bGh-ae-hCL">
@@ -758,4 +759,7 @@
         <image name="reply-icon" width="30" height="30"/>
         <image name="retweet-icon" width="30" height="30"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Crc-1y-ijs"/>
+    </inferredMetricsTieBreakers>
 </document>
