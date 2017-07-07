@@ -8,11 +8,13 @@
 
 import UIKit
 
-class NewPostViewController: UIViewController {
+class NewPostViewController: UIViewController, UITextViewDelegate {
 
+    @IBOutlet weak var characterCountLabel: UILabel!
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var tweetText: UITextView!
     var delegate: NewPostViewControllerDelegate?
+    let CHARACTER_LIMIT = 140
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,11 +23,27 @@ class NewPostViewController: UIViewController {
         profileImageView.af_setImage(withURL: User.current!.profileUrl!)
         
         tweetText.becomeFirstResponder()
+        tweetText.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        if let text = tweetText.text {
+            let count = text.characters.count
+            if count >= 140 {
+                let index = text.index(text.startIndex, offsetBy: 140)
+                tweetText.text = text.substring(to: index)
+                characterCountLabel.text = "0"
+            } else {
+                characterCountLabel.text = String(describing: (CHARACTER_LIMIT - count))
+            }
+        } else {
+            characterCountLabel.text = "140"
+        }
     }
     
     @IBAction func onTapCancel(_ sender: Any) {
