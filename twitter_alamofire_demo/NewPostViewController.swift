@@ -31,7 +31,7 @@ class NewPostViewController: UIViewController, UITextViewDelegate {
     }
     
     func textViewDidChange(_ textView: UITextView) {
-        characterCountLabel.text = String(describing: textView.text.characters.count)
+        characterCountLabel.text = String(describing: (140 - textView.text.characters.count))
     }
     
     @IBAction func onTapCancel(_ sender: Any) {
