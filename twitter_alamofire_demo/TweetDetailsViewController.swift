@@ -32,6 +32,14 @@ class TweetDetailsViewController: UIViewController {
         favoriteButton.setImage(#imageLiteral(resourceName: "favor-icon"), for: .normal)
         favoriteButton.setImage(#imageLiteral(resourceName: "favor-icon-red"), for: .selected)
         updateInfo()
+        navigationController!.title = "Tweet"
+        
+        // Make profile picture circular
+        profileImageView.layer.borderWidth = 1
+        profileImageView.layer.masksToBounds = false
+        profileImageView.layer.borderColor = UIColor.lightGray.cgColor
+        profileImageView.layer.cornerRadius = profileImageView.frame.height/2
+        profileImageView.clipsToBounds = true
     }
     
     func updateInfo() {

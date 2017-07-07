@@ -20,8 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if User.current != nil {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let timelineVC = storyboard.instantiateViewController(withIdentifier: "TweetsNavigationController")
-            window?.rootViewController = timelineVC
+            let tabController = storyboard.instantiateViewController(withIdentifier: "TwitterTabController")
+            window?.rootViewController = tabController
         } else {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let loginVC = storyboard.instantiateViewController(withIdentifier: "LoginViewController")

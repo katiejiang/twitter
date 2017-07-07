@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TimelineViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NewPostViewControllerDelegate {
+class TimelineViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NewPostViewControllerDelegate, TweetCellDelegate {
     
     var tweets: [Tweet] = []
     
@@ -16,7 +16,6 @@ class TimelineViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateTweets()
         
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refreshControlAction(_:)), for: UIControlEvents.valueChanged)
@@ -26,7 +25,9 @@ class TimelineViewController: UIViewController, UITableViewDelegate, UITableView
         tableView.delegate = self
         
         tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 100        
+        tableView.estimatedRowHeight = 100
+        
+        updateTweets()
     }
     
     func refreshControlAction(_ refreshControl: UIRefreshControl) {
@@ -52,9 +53,8 @@ class TimelineViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TweetCell", for: indexPath) as! TweetCell
-        
+        cell.delegate = self
         cell.tweet = tweets[indexPath.row]
-        
         return cell
     }
     
@@ -67,13 +67,12 @@ class TimelineViewController: UIViewController, UITableViewDelegate, UITableView
         // Dispose of any resources that can be recreated.
     }
     
-    
-    @IBAction func didTapLogout(_ sender: Any) {
-        APIManager.shared.logout()
-    }
-    
     func did(post: Tweet) {
         updateTweets()
+    }
+    
+    func tweetCell(_ tweetCell: TweetCell, didTap user: User) {
+        performSegue(withIdentifier: "userSegue", sender: user)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -85,6 +84,10 @@ class TimelineViewController: UIViewController, UITableViewDelegate, UITableView
                 let vc = segue.destination as! TweetDetailsViewController
                 let cell = sender as! TweetCell
                 vc.tweet = cell.tweet
+            } else if identifier == "userSegue" {
+                let vc = segue.destination as! ProfileViewController
+                let user = sender as! User
+                vc.user = user
             }
         }
     }
