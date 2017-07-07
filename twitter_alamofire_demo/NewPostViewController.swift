@@ -8,8 +8,9 @@
 
 import UIKit
 
-class NewPostViewController: UIViewController {
+class NewPostViewController: UIViewController, UITextViewDelegate {
 
+    @IBOutlet weak var characterCountLabel: UILabel!
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var tweetText: UITextView!
     var delegate: NewPostViewControllerDelegate?
@@ -21,11 +22,16 @@ class NewPostViewController: UIViewController {
         profileImageView.af_setImage(withURL: User.current!.profileUrl!)
         
         tweetText.becomeFirstResponder()
+        tweetText.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        characterCountLabel.text = String(describing: textView.text.characters.count)
     }
     
     @IBAction func onTapCancel(_ sender: Any) {

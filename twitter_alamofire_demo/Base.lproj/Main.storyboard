@@ -98,11 +98,19 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pBQ-dZ-1Ox">
+                                <rect key="frame" x="348" y="61" width="9" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="fkj-uh-VHB" firstAttribute="leading" secondItem="X4I-zG-dF5" secondAttribute="leading" constant="16" id="19q-0a-MZM"/>
+                            <constraint firstItem="7Kw-7l-QiV" firstAttribute="leading" secondItem="pBQ-dZ-1Ox" secondAttribute="trailing" constant="-24" id="C0F-B7-KPX"/>
+                            <constraint firstItem="pBQ-dZ-1Ox" firstAttribute="top" secondItem="N0h-k9-UqA" secondAttribute="bottom" constant="41" id="FQx-Pe-Zqv"/>
                             <constraint firstAttribute="trailing" secondItem="gu8-f4-7J9" secondAttribute="trailing" constant="16" id="LiJ-Gh-ykM"/>
                             <constraint firstItem="5Rg-vq-jBc" firstAttribute="top" secondItem="gu8-f4-7J9" secondAttribute="bottom" constant="30" id="Mfh-m9-ET7"/>
                             <constraint firstAttribute="trailing" secondItem="7Kw-7l-QiV" secondAttribute="trailing" constant="16" id="OXr-qN-md2"/>
@@ -117,6 +125,7 @@
                         </connections>
                     </view>
                     <connections>
+                        <outlet property="characterCountLabel" destination="pBQ-dZ-1Ox" id="6US-MJ-cD2"/>
                         <outlet property="profileImageView" destination="fkj-uh-VHB" id="3P4-Jh-Wbl"/>
                         <outlet property="tweetText" destination="gu8-f4-7J9" id="QcW-QQ-h9g"/>
                     </connections>
