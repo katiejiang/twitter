@@ -68,7 +68,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func updateTweets() {
         // TODO: change this to user timeline
-        APIManager.shared.getHomeTimeLine { (tweets, error) in
+        APIManager.shared.getUserTimeLine(userId: user.id) { (tweets, error) in
             if let tweets = tweets {
                 self.tweets = tweets
                 self.tableView.reloadData()

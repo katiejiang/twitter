@@ -10,6 +10,7 @@ import Foundation
 
 class User {
     
+    var id: String!
     var name: String?
     var screenName: String?
     var profileUrl: URL?
@@ -45,6 +46,7 @@ class User {
     }
     
     init(dictionary: [String: Any]) {
+        id = dictionary["id_str"] as! String
         name = dictionary["name"] as? String
         screenName = dictionary["screen_name"] as? String
         profileUrl = URL(string: dictionary["profile_image_url_https"] as! String)
