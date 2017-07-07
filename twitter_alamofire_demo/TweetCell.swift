@@ -32,7 +32,7 @@ class TweetCell: UITableViewCell {
     func updateCell() {
         nameLabel.text = tweet.user.name
         screenNameLabel.text = "@\(tweet.user.screenName!)"
-        dateLabel.text = tweet.createdAtString
+        dateLabel.text = tweet.timeAgo
         tweetLabel.text = tweet.text
         retweetLabel.text = String(describing: tweet.retweetCount)
         favoriteLabel.text = String(describing: tweet.favoriteCount)

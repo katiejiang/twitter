@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import DateToolsSwift
 
 class Tweet {
     
@@ -20,6 +21,7 @@ class Tweet {
     var user: User // Contains name, screenname, etc. of tweet author
     var createdAtString: String // Display date
     var profileUrl: URL?
+    var timeAgo: String
     
     // MARK: - Create initializer with dictionary
     init(dictionary: [String: Any]) {
@@ -41,9 +43,11 @@ class Tweet {
         let date = formatter.date(from: createdAtOriginalString)!
         // Configure output format
         formatter.dateStyle = .short
-        formatter.timeStyle = .none
+        formatter.timeStyle = .short
         // Convert Date to String
         createdAtString = formatter.string(from: date)
+        
+        timeAgo = date.shortTimeAgoSinceNow
         
         profileUrl = URL(string: user["profile_image_url_https"] as! String)
     }
